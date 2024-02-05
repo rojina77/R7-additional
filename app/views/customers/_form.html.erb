@@ -4,7 +4,7 @@
       <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
 
       <ul>
-        <% customer.errors.each do |error| %>
+        <% customer.errors.full_messages.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>

@@ -1,10 +1,9 @@
-<p style="color: green"><%= notice %></p>
+<p>
+  <strong>Full Name:</strong>
+  <%= @customer.full_name %> 
 
-<%= render @customer %>
+<p>
+  <strong>Email:</strong>
+  <%= @customer.email %>
+</p>
 
-<div>
-  <%= link_to "Edit this customer", edit_customer_path(@customer) %> |
-  <%= link_to "Back to customers", customers_path %>
-
-  <%= button_to "Destroy this customer", @customer, method: :delete %>
-</div>

@@ -9,6 +9,7 @@ class CustomersController < ApplicationController
 
   # GET /customers/1 or /customers/1.json
   def show
+    @customer = Customer.find(params[:id])
   end
 
   # GET /customers/new
@@ -32,10 +33,8 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
-        format.html { redirect_to customer_url(@customer), notice: "Customer was successfully created." }
         format.json { render :show, status: :created, location: @customer }
       else
-        format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
     end
@@ -74,21 +73,17 @@ class CustomersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_customer
-      debugger
       @customer = Customer.find(params[:id])
     end
-
-
 
     # Only allow a list of trusted parameters through.
     def customer_params
       params.require(:customer).permit(:first_name, :last_name, :phone, :email)
-    
+    end
       
     def catch_not_found(e)
       Rails.logger.debug("We had a not found exception.")
       flash.alert = e.to_s
       redirect_to customers_path
     end
-  end
 end
