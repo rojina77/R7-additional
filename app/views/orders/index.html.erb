@@ -1,0 +1,35 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Orders</h1>
+
+<div class="container-fluid row">
+  <% @orders.each do |order| %>
+    <div class="col-sm">
+      <div class="card border border-2 border-success p-1 mt-3" style="width: 18rem;">
+        <div class="card-header"
+          Order ##{order.id}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Product: <%= order.product_name %></h5>
+          <p class="card-text">Product Count: <%= order.product_count %></p>
+          <p class="card-text">Customer: <%= order.customer.full_name %></p>
+        </div>
+        <div class="card-footer">
+          <td><%= link_to 'Show', order %></td>  
+          <%= link_to 'Edit', edit_order_path(order), class: 'btn btn-primary' %>
+          <%= link_to 'Delete', order, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        </div>
+  <% end %>
+</div>
+
+
+<% flash.each do |type, message| %>
+  <div class="alert alert-<%= type %> alert-dismissible fade show" role="alert">
+    <%= message %>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% end %>
+
+<%= link_to 'New Orderr', new_order_path %>

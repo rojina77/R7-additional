@@ -1,0 +1,28 @@
+<!-- app/views/customers/index.html.erb -->
+<h1>Customers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Full Name</th>
+      <th>Number of Orders</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <div class="btn btn-primary">
+        <td><%= customer.full_name %></td>
+        <td><%= customer.orders.count %></td>
+        <td><%= link_to 'Show', customer %></td>  
+        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+        <td><%= link_to 'Delete', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <%= icon('fa-regular', 'bell')%>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Customer', new_customer_path %>
