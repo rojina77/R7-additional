@@ -13,12 +13,14 @@
   <tbody>
     <% @customers.each do |customer| %>
       <tr>
+        <div class="btn btn-primary">
         <td><%= customer.full_name %></td>
         <td><%= customer.orders.count %></td>
-        <td><%= link_to 'Show', customer %></td>
+        <td><%= link_to 'Show', customer %></td>  
         <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
         <td><%= link_to 'Delete', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <%= icon('fa-regular', 'bell')%>
     <% end %>
   </tbody>
 </table>

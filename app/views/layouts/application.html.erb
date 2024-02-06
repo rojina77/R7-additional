@@ -2,7 +2,7 @@
 
 <html>
   <head>
-    <title>R7Additional</title>
+    <title> Full assignment </title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,11 +10,47 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-  <body>
-    <%= yield %>
-  </body>
-  <% if flash[:alert].present? %>
-  <p class=""my_alert""><%= flash[:alert] %></p>
-  <% end %>
 
+  <body>
+  <div class="container-fluid p-5 bg-primary text-white text-center">
+  <h1>My First Bootstrap Page</h1>
+  <p>Customers and Orders </p> 
+  </div>  
+
+  <div flash.notice = "The customer record was created successfully.">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="customerDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Customers
+        </a>
+        <div class="dropdown-menu" aria-labelledby="customerDropdown">
+          <%= link_to "Customers", customers_path, class: "dropdown-item" %>
+          <%= link_to "New Customer", new_customer_path, class: "dropdown-item" %>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="orderDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Orders
+        </a>
+        <div class="dropdown-menu" aria-labelledby="orderDropdown">
+          <%= link_to "Orders", orders_path, class: "dropdown-item" %>
+          <%= link_to "New Order", new_order_path, class: "dropdown-item" %>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container">
+  <%= yield %>
+</div>
+</body>
 </html>
